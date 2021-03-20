@@ -1,3 +1,6 @@
+/* siit tõmbame failist kõik haigused */
+
+
 public class Haigused {
-    // siia tõmbame failist kõik haigused
+
 }
