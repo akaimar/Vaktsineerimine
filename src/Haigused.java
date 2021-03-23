@@ -25,10 +25,11 @@ public class Haigused {
         // käivitame funktsiooni kuupäeva genereerimiseks
         for (String i : HaigusteNimekiri.haigusteLoend) {
             if (haigus.equals(i)) {
-                tagastus = " kontroll: " + i + " on riskirühmas ja te kuulute eelisjärjekorras vaktsineerimisele!";
+                tagastus = " on riskirühmas ja te kuulute eelisjärjekorras vaktsineerimisele!";
+                break; // peab olema break sees, muidu jookseb lõpuni
             }
             else {
-                tagastus = " kontroll: " + i + " ei ole riskirühmas ja te ei kuulu eelisjärjekorras vaktsineerimisele!";
+                tagastus = " ei ole riskirühmas ja te ei kuulu eelisjärjekorras vaktsineerimisele!";
             }
         }
         return tagastus;

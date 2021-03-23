@@ -20,19 +20,7 @@ public class Peaklass {
 
         Haigused väljundKlassistHaigus = new Haigused(kasutajaHaigus); // saadame klassi Haigused kasutaja poolt sisestatud haiguse
 
-        System.out.println("Teie sisestasite " + kasutajaHaigus + ", kuid " + väljundKlassistHaigus);
-
-        // loen sisse failist haigused listi
-        ArrayList<String> haigused = new ArrayList<>();
-        File failiSisu = new File("src/RiskigruppideKlassifikaator.txt");
-        try (Scanner sc = new Scanner(failiSisu, "UTF-8")) {
-            while(sc.hasNextLine()) {
-                haigused.add(sc.nextLine()); // haigused lisatud failist listi
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Riskirühma kuuluvad haigused on: " + haigused);
+        System.out.println("Teie sisestasite " + kasutajaHaigus + ". Haigus" + väljundKlassistHaigus);
 
     }
 
