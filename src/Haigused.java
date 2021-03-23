@@ -1,33 +1,39 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 
 public class Haigused {
+    private String kasOnRiskirühmas;
 
-    String haiguseNimetus; // Isendiväli (hiljem tuleb siia list) haiguste nimekirja jaoks
-    String failiAsukoht = "src/RiskigruppideKlassifikaator.txt";
-
-    // konstruktor
-
-    public Haigused(String haiguseNimetus, String failiAsukoht) {
-        this.haiguseNimetus = haiguseNimetus;
-        this.failiAsukoht = failiAsukoht;
+    public Haigused(String haigus) {
+        this.kasOnRiskirühmas = haigus;
     }
 
-    public Haigused(String astma) {
+    public String getHaigus() {
+        return kasOnRiskirühmas;
     }
 
-    // meetod haiguste saamiseks listi
+    public void setHaigus(String haigus) {
+        this.kasOnRiskirühmas = haigus;
+    }
 
-    public ArrayList haigusedFailist(failiAsukoht) {
-        ArrayList<String> haigused = new ArrayList<>();
-        File failiSisu = new File(failiAsukoht);
-        try (Scanner sc = new Scanner(failiSisu, "UTF-8")) {
-            while (sc.hasNextLine()) {
-                haigused.add(sc.nextLine());
-            }
+    // meetod kontrollimaks, kas on inimene on riskirühmas
+    public String kasOnRiskigrupis(String haigus){
+        String tagastus = null;
+        if(haigus == "astma"){
+            tagastus = "On riskirühmas";
         }
-        return haigused;
+        else {
+            tagastus = "Ei ole riskirühmas";
+        }
+        return tagastus;
+    }
+
+
+    @Override
+    public String toString() {
+        return kasOnRiskigrupis(kasOnRiskirühmas);
     }
 
 }
