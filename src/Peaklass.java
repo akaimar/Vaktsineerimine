@@ -1,7 +1,6 @@
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 public class Peaklass {
 
@@ -11,19 +10,27 @@ public class Peaklass {
         Scanner sisend1 = new Scanner(System.in);
         Scanner sisend2 = new Scanner(System.in);
 
-        String s1 ="astma";
-        String s2 ="bronhiit";
-        String s3 ="köha";
-        HaigusteNimekiri.haigusteLoend.add(s1);
-        HaigusteNimekiri.haigusteLoend.add(s2);
-        HaigusteNimekiri.haigusteLoend.add(s3);
+        //loen sisse failist haigused listi
+        File failiSisu = new File("src/RiskigruppideKlassifikaator.txt");
+        try (Scanner sc = new Scanner(failiSisu, "UTF-8")) {
+            while(sc.hasNextLine()) {
+                HaigusteNimekiri.haigusteLoend.add(sc.nextLine()); // haigused lisatud failist listi
+            }
+            }
+            catch(FileNotFoundException e) {
+            e.printStackTrace();
+            }
 
+        // käivitame küsimuste esitaja
         System.out.println("Sisesta oma nimi: ");
         String kasutajaNimi = sisend1.nextLine();
         System.out.println("Tere " + kasutajaNimi);
 
-        System.out.print("Milline krooniline haigus teil esineb: ");
+        System.out.print("Milline krooniline haigus teil esineb ");
+        System.out.println(HaigusteNimekiri.haigusteLoend + "? : ");
         String kasutajaHaigus = sisend2.nextLine();
+
+        // prindime väljundi kasutajale
 
         Haigused väljundKlassistHaigus = new Haigused(kasutajaHaigus); // saadame klassi Haigused kasutaja poolt sisestatud haiguse
 
