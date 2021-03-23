@@ -4,8 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Peaklass {
+
     public static void main(String[] args) {
-        ArrayList<String> haigused = new ArrayList<>();
 
         // küsime kasutajalt sisendi
         Scanner sisend1 = new Scanner(System.in);
@@ -13,17 +13,17 @@ public class Peaklass {
 
         System.out.println("Sisesta oma nimi: ");
         String kasutajaNimi = sisend1.nextLine();
+        System.out.println("Tere " + kasutajaNimi);
 
         System.out.print("Milline krooniline haigus teil esineb: ");
         String kasutajaHaigus = sisend2.nextLine();
 
-        System.out.println("Tere " + kasutajaNimi + " teil on " + kasutajaHaigus);
+        Haigused väljundKlassistHaigus = new Haigused(kasutajaHaigus); // saadame klassi Haigused kasutaja poolt sisestatud haiguse
 
-        Haigused haigus = new Haigused("astma");
+        System.out.println("Teie sisestasite " + kasutajaHaigus + ", kuid " + väljundKlassistHaigus);
 
-        System.out.println(kasutajaHaigus + " " + haigus);
-
-        // loen sisse failist haigused
+        // loen sisse failist haigused listi
+        ArrayList<String> haigused = new ArrayList<>();
         File failiSisu = new File("src/RiskigruppideKlassifikaator.txt");
         try (Scanner sc = new Scanner(failiSisu, "UTF-8")) {
             while(sc.hasNextLine()) {
@@ -35,7 +35,6 @@ public class Peaklass {
         System.out.println("Riskirühma kuuluvad haigused on: " + haigused);
 
     }
-
 
 }
 

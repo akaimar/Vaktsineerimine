@@ -21,15 +21,18 @@ public class Haigused {
     // meetod kontrollimaks, kas on inimene on riskirühmas
     public String kasOnRiskigrupis(String haigus){
         String tagastus = null;
-        if(haigus == "astma"){
-            tagastus = "on riskirühmas ja te kuulute eelisjärjekorras vaktsineerimisele!";
-        }
-        else {
-            tagastus = "ei ole riskirühmas ja te ei kuulu eelisjärjekorras vaktsineerimisele!";
+        // for tsükliga käime listi läbi ja võrdleme
+        // käivitame funktsiooni kuupäeva genereerimiseks
+        for (String i : HaigusteNimekiri.haigusteLoend) {
+            if (haigus.equals(i)) {
+                tagastus = " kontroll: " + i + " on riskirühmas ja te kuulute eelisjärjekorras vaktsineerimisele!";
+            }
+            else {
+                tagastus = " kontroll: " + i + " ei ole riskirühmas ja te ei kuulu eelisjärjekorras vaktsineerimisele!";
+            }
         }
         return tagastus;
     }
-
 
     @Override
     public String toString() {
