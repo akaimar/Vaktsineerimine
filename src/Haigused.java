@@ -22,10 +22,10 @@ public class Haigused {
     public String kasOnRiskigrupis(String haigus){
         String tagastus = null;
         if(haigus == "astma"){
-            tagastus = "On riskirühmas";
+            tagastus = "on riskirühmas ja te kuulute eelisjärjekorras vaktsineerimisele!";
         }
         else {
-            tagastus = "Ei ole riskirühmas";
+            tagastus = "ei ole riskirühmas ja te ei kuulu eelisjärjekorras vaktsineerimisele!";
         }
         return tagastus;
     }
